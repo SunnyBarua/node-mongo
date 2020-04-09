@@ -9,17 +9,10 @@ const app = express()
 app.use(cors())
 app.use(bodyParser.json())
 
-const db_User=process.env.DB_USER;
-const db_PASS=process.env.DB_PASS;
-
-
-const uri = `mongodb+srv://${db_User}:${db_PASS}@cluster0-7seng.mongodb.net/test?retryWrites=true&w=majority`
-
+const uri = process.env.DB_PATH
 //database connection
 
 let client = new MongoClient(uri, { useNewUrlParser: true });
-
-
 
 app.get('/products',(req,res)=>{
 
